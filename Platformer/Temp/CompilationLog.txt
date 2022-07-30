@@ -1,0 +1,2 @@
+# Starting compiling Unity.VisualStudio.Editor.dll
+G:\Program Files\2020.3.21f1\Editor\Data\Tools\RoslynScripts\unity_csc.bat /noconfig @Temp/UnityTempFile-3610bf72028717543be599fffb4528ac
