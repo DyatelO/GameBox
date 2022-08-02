@@ -1,24 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement 
+[RequireComponent(typeof(Rigidbody2D))]
+public class CharacterMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float jumpForce;
+    private Rigidbody2D rigidbody2D;
+
+    private void Awake()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    internal void Move(float direction, bool isJump)
     {
-        
+        if(isJump)
+        {
+            Jump();
+        }
     }
 
-    internal void Move()
+    internal void Jump()
     {
-        throw new NotImplementedException();
+        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
     }
 }
