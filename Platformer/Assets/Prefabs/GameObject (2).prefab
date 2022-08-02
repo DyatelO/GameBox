@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652410688850387751}
   - component: {fileID: 1652410688850387748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

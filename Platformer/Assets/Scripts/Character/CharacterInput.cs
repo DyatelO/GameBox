@@ -15,8 +15,10 @@ public class CharacterInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalDirection = Input.GetAxisRaw(GlobalStringVars.HORIZONTAL_AXIS);
+        float horizontalDirection = Input.GetAxis(GlobalStringVars.HORIZONTAL_AXIS);
         bool isJumpButtonOn = Input.GetButtonDown(GlobalStringVars.JUMP);
+
+        Debug.Log(horizontalDirection);
 
         movement.Move(horizontalDirection, isJumpButtonOn);
     }
