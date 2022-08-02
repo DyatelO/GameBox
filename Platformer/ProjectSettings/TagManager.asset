@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1595161663
+    locked: 0
+  - name: BG_Forward
+    uniqueID: 959469153
+    locked: 0
+  - name: Ground
+    uniqueID: 789871311
+    locked: 0
+  - name: Characters
+    uniqueID: 2189867937
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
