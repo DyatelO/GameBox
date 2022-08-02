@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,10 @@ public class CharacterMovement
     void Update()
     {
         
+    }
+
+    internal void Move()
+    {
+        throw new NotImplementedException();
     }
 }

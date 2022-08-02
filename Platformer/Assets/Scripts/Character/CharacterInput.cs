@@ -8,12 +8,13 @@ public class CharacterInput : MonoBehaviour
 
     void Start()
     {
-        
+        movement = new CharacterMovement();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        movement.Move();
     }
 }
