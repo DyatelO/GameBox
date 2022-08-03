@@ -6,6 +6,13 @@ using UnityEngine;
 public class CharacterInput : MonoBehaviour
 {
     private CharacterMovement movement;
+    //private Animator animator;
+
+    private void Awake()
+    {
+        //animator = GetComponentInChildren<Animator>();
+    }
+
     void Start()
     {
         movement = GetComponent<CharacterMovement>();
@@ -18,9 +25,11 @@ public class CharacterInput : MonoBehaviour
         float horizontalDirection = Input.GetAxis(GlobalStringVars.HORIZONTAL_AXIS);
         bool isJumpButtonOn = Input.GetButtonDown(GlobalStringVars.JUMP);
 
-        Debug.Log(horizontalDirection);
+        //Debug.Log(horizontalDirection);
 
         movement.Move(horizontalDirection, isJumpButtonOn);
+
+        //if()
     }
 
     //private void FixedUpdate()

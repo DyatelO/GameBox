@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterInput.cs" />
     <Compile Include="Assets\Scripts\Character\GlobalStringVars.cs" />
+    <Compile Include="Assets\Scripts\Character\Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
