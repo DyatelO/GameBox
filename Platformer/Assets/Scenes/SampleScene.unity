@@ -1895,8 +1895,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2146608618}
   - component: {fileID: 2146608620}
-  - component: {fileID: 2146608619}
-  - component: {fileID: 2146608621}
   - component: {fileID: 2146608622}
   m_Layer: 0
   m_Name: Character_Player_grp
@@ -1921,18 +1919,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2146608619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146608617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc6266e51b04fc84d95c83079cea533d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &2146608620
 Rigidbody2D:
   serializedVersion: 4
@@ -1954,59 +1940,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2146608621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146608617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5a29aca27950548b360316b2c63be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 3.2
-  speed: 1.2
-  isGrounded: 0
-  groundColiderTransform: {fileID: 1241018451}
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -1
-      value: -1.2
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1.2
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  jumpOffset: 0.2
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &2146608622
 MonoBehaviour:
   m_ObjectHideFlags: 0
