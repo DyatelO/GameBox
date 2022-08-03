@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
         float horizontalDirection = Input.GetAxis(GlobalStringVars.HORIZONTAL_AXIS);
         HandleMovementWithRigidBody2D(horizontalDirection);
 
-        //IsOnGround();
+        IsOnGround();
     }
 
 
@@ -72,20 +72,22 @@ public class Movement : MonoBehaviour
     {
         playerAnimation.PlayWalkAnimation(Mathf.Abs(rigidbody2D.velocity.x));
         playerAnimation.SetFacingDirection(rigidbody2D.velocity.x);
+
+        playerAnimation.PlayJumpAnimation(!isGround);
     }
 
     private void HandleJumping()
     {
         if(Input.GetButtonDown(TagAnimation.JUMP_BUTTON))
         {
-            Debug.Log("SPACE!!!!!!!!");
+            //Debug.Log("SPACE!!!!!!!!");
             Jump();
         }
     }
 
     private void Jump()
     {
-        IsOnGround();
+        //IsOnGround();
         if (isGround)
         {
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
@@ -96,5 +98,6 @@ public class Movement : MonoBehaviour
     {
         Vector3 overlapCirclePosition = groundCheckTransform.position;
         isGround = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
+
     }
 }
