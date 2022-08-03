@@ -1935,6 +1935,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.2
   jumpForce: 3.2
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckPosition: {fileID: 0}
+  circleCollider2D: {fileID: 0}
 --- !u!50 &2146608620
 Rigidbody2D:
   serializedVersion: 4
