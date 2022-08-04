@@ -56,12 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\HelperHandles\GlobalStringVars.cs" />
     <Compile Include="Assets\Scripts\Character\Health.cs" />
-    <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerAnimation.cs" />
-    <Compile Include="Assets\Scripts\HelperHandles\TagAnimation.cs" />
+    <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Scripts\Damage\DamageDiller.cs" />
+    <Compile Include="Assets\Scripts\HelperHandles\GlobalStringVars.cs" />
+    <Compile Include="Assets\Scripts\HelperHandles\TagAnimation.cs" />
+    <Compile Include="Assets\Scripts\Character\Puncher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -655,6 +656,9 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
@@ -720,9 +724,6 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

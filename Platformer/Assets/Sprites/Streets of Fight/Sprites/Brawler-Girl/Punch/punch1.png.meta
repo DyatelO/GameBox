@@ -109,12 +109,12 @@ TextureImporter:
       name: punch1_0
       rect:
         serializedVersion: 2
-        x: 35
+        x: 33
         y: 0
-        width: 46
+        width: 29
         height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.43103448, y: -0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

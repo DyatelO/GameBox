@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    public GameObject attackPoint;
 
     private void Awake()
     {
@@ -23,19 +24,27 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool(TagAnimation.JUMP_ANIMATION_PARAMETER, isJump);
     }
 
-    public void SetFacingDirection(float direction)
+    public bool SetFacingDirection(float direction)
     {
+
+        //Vector3 positionScale = attackPoint.transform.position;
         if(direction > 0)
         {
             spriteRenderer.flipX = false;
+
+            //attackPoint.transform.position = positionScale;
         }
         else
         {
             if(direction < 0)
             {
                 spriteRenderer.flipX = true;
+                //attackPoint.transform.position = -positionScale;
             }
         }
+        return spriteRenderer.flipX;
+
+//new Vector2(direction, attackPoint.transform.position.y);
     }
 
     //public void PlayPunchAnimation(bool isPunch)

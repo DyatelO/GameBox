@@ -22,14 +22,26 @@ public class Movement : MonoBehaviour
     private CircleCollider2D circleCollider2D;
 
     public Transform attackPoint;
+    Vector2 position;
+    float offsetPoint; //= attackPoint.localPosition.x;
     [SerializeField] public float attackRange = 0.5f;
+    [SerializeField] public float attackRate = 2f;
+    private float nextAttackTime = 0f;
     [SerializeField] private LayerMask enemyMask;
+
+    float horizontalDirection;
+    bool facing; //= false;
+
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimation>();
         groundCheckTransform = GetComponentInChildren<CircleCollider2D>().transform;
+
+        offsetPoint = attackPoint.localPosition.x;
+        //position.x = attackPoint.localPosition.x;
+        //attackPoint = GetComponentInChildren<Transform>().transform;
     }
 
     private void Update()
@@ -52,10 +64,24 @@ public class Movement : MonoBehaviour
 
     private void HandleMovementWithRigidBody2D(float direction)
     {
+        position = attackPoint.localPosition;
         if (Mathf.Abs(direction) > 0)
         {
             rigidbody2D.velocity = new Vector2(moveSpeed * direction, rigidbody2D.velocity.y);
         }
+
+        if ( direction > 0 )      //direction > 0 )
+        {
+            position.x = offsetPoint;
+
+        }
+        if(direction < 0)
+        {
+            //position.x = attackPoint.localPosition.x - attackPoint.localPosition.x * 2;
+            position.x = -offsetPoint;
+        }
+        Debug.Log(position.x);
+        attackPoint.localPosition = position;
     }
 
     private void HandlePlayerAnimations()
@@ -63,15 +89,9 @@ public class Movement : MonoBehaviour
         playerAnimation.PlayWalkAnimation(Mathf.Abs(rigidbody2D.velocity.x));
         playerAnimation.SetFacingDirection(rigidbody2D.velocity.x);
 
-        //playerAnimation.PlayJumpAnimation(!isGround);
+        //Debug.Log(facing);
 
-        //playerAnimation.PlayPunchAnimation(isPunch);
-        //if(isPunch)
-        //{
-        //    playerAnimation.PlayPunchAnimation();
-        //}
-
-
+        playerAnimation.PlayJumpAnimation(!isGround);
     }
 
     private void HandleJumping()
@@ -104,19 +124,28 @@ public class Movement : MonoBehaviour
     //    }
     //}
 
-    private void HandleAttack()
+    private void HandleAttack()   // (float direction)
     {
-        if (Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
+
+        if (Time.time >= nextAttackTime)
         {
             //playerAnimation.PlayPunchAnimation();
             //isPunch = true;
-            playerAnimation.PlayPunchAnimation();
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
 
-            foreach(Collider2D enemy in hitEnemies)
+            if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
             {
-                Debug.Log("We hit " + enemy.name) ;
+                playerAnimation.PlayPunchAnimation();
+
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
+
+                foreach(Collider2D enemy in hitEnemies)
+                {
+                    Debug.Log("We hit " + enemy.name) ;
+                }
+
+                nextAttackTime = Time.time + 1f / attackRate;
             }
+
         }
     }
 
