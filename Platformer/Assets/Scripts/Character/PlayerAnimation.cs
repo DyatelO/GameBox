@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
-
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -39,8 +38,16 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    public void PlayPunchAnimation(bool isPunch)
+    //public void PlayPunchAnimation(bool isPunch)
+    //{
+    //    animator.SetBool(TagAnimation.ATTACK_ANIMATION_PARAMETER, isPunch);
+    //}
+
+    public void PlayPunchAnimation()
     {
-        animator.SetBool(TagAnimation.ATTACK_ANIMATION_PARAMETER, isPunch);
+        animator.SetTrigger(TagAnimation.ATTACK_ANIMATION_TRIGGER_PARAMETER);
     }
+
+
+
 }   //

@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Character\Movement.cs" />
     <Compile Include="Assets\Scripts\Character\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\HelperHandles\TagAnimation.cs" />
+    <Compile Include="Assets\Scripts\Damage\DamageDiller.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -21,8 +21,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool isPunch = false;
     private CircleCollider2D circleCollider2D;
 
-
-    //float horizontalDirection;
+    public Transform attackPoint;
+    [SerializeField] public float attackRange = 0.5f;
+    [SerializeField] private LayerMask enemyMask;
 
     private void Awake()
     {
@@ -37,7 +38,8 @@ public class Movement : MonoBehaviour
 
         HandleJumping();
 
-        HndleAttack();
+        //HndleAttack();
+        HandleAttack();
     }
 
     private void FixedUpdate()
@@ -46,22 +48,6 @@ public class Movement : MonoBehaviour
         HandleMovementWithRigidBody2D(horizontalDirection);
 
         IsOnGround();
-    }
-
-
-
-    private void HandleMovementWithTransform(float direction)
-    {
-        //float horizontalDirection = Input.GetAxis(GlobalStringVars.HORIZONTAL_AXIS);
-
-        tempPosition = transform.position;
-
-        if(Mathf.Abs(direction) > 0  )// Mathf.Abs(direction) > 0 )
-        {
-            tempPosition.x += direction * moveSpeed * Time.deltaTime;;
-        }
-
-        transform.position = tempPosition;
     }
 
     private void HandleMovementWithRigidBody2D(float direction)
@@ -77,23 +63,27 @@ public class Movement : MonoBehaviour
         playerAnimation.PlayWalkAnimation(Mathf.Abs(rigidbody2D.velocity.x));
         playerAnimation.SetFacingDirection(rigidbody2D.velocity.x);
 
-        playerAnimation.PlayJumpAnimation(!isGround);
+        //playerAnimation.PlayJumpAnimation(!isGround);
 
-        playerAnimation.PlayPunchAnimation(isPunch);
+        //playerAnimation.PlayPunchAnimation(isPunch);
+        //if(isPunch)
+        //{
+        //    playerAnimation.PlayPunchAnimation();
+        //}
+
+
     }
 
     private void HandleJumping()
     {
         if(Input.GetButtonDown(TagAnimation.JUMP_BUTTON))
         {
-            //Debug.Log("SPACE!!!!!!!!");
             Jump();
         }
     }
 
     private void Jump()
     {
-        //IsOnGround();
         if (isGround)
         {
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
@@ -106,12 +96,37 @@ public class Movement : MonoBehaviour
         isGround = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
     }
 
-    private void HndleAttack()
+    //private void HandleAttack()
+    //{
+    //    if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
+    //    {
+    //        isPunch = true;
+    //    }
+    //}
+
+    private void HandleAttack()
     {
-        if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
+        if (Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
         {
-            isPunch = true;
+            //playerAnimation.PlayPunchAnimation();
+            //isPunch = true;
+            playerAnimation.PlayPunchAnimation();
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
+
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("We hit " + enemy.name) ;
+            }
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 
 }   //
