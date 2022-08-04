@@ -38,4 +38,9 @@ public class PlayerAnimation : MonoBehaviour
             }
         }
     }
-}
+
+    public void PlayPunchAnimation(bool isPunch)
+    {
+        animator.SetBool(TagAnimation.ATTACK_ANIMATION_PARAMETER, isPunch);
+    }
+}   //

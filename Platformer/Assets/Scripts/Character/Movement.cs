@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool isGround = false;
     [SerializeField] private float jumpOffset ;
     [SerializeField] private Transform groundCheckTransform;
+
+    [SerializeField] private bool isPunch = false;
     private CircleCollider2D circleCollider2D;
 
 
@@ -34,6 +36,8 @@ public class Movement : MonoBehaviour
         HandlePlayerAnimations();
 
         HandleJumping();
+
+        HndleAttack();
     }
 
     private void FixedUpdate()
@@ -74,6 +78,8 @@ public class Movement : MonoBehaviour
         playerAnimation.SetFacingDirection(rigidbody2D.velocity.x);
 
         playerAnimation.PlayJumpAnimation(!isGround);
+
+        playerAnimation.PlayPunchAnimation(isPunch);
     }
 
     private void HandleJumping()
@@ -98,6 +104,14 @@ public class Movement : MonoBehaviour
     {
         Vector3 overlapCirclePosition = groundCheckTransform.position;
         isGround = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
-
     }
-}
+
+    private void HndleAttack()
+    {
+        if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
+        {
+            isPunch = true;
+        }
+    }
+
+}   //

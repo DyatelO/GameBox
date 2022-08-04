@@ -4,6 +4,7 @@ public static class TagAnimation
 
     public static string WALK_ANIMATION_PARAMETER = "Walk";
     public static string JUMP_ANIMATION_PARAMETER = "IsJump";
+    public static string ATTACK_ANIMATION_PARAMETER = "IsPunch";
 
     #endregion
 
@@ -13,7 +14,7 @@ public static class TagAnimation
     public static string VERTICAL_AXIS = "Vertical";
     public static string JUMP_BUTTON = "Jump";
 
-    public const string ATTACK = "Fire1";
+    public const string ATTACK_BUTTON = "Fire1";
 
     #endregion
 }
