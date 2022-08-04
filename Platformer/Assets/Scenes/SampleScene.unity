@@ -1235,11 +1235,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1263238021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1263238021, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
-  m_PrefabInstance: {fileID: 7127659714184482892}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1272355612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,10 +2328,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7127659712042415521, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 1263238021}
     - target: {fileID: 7127659712042415525, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
       propertyPath: m_Name
       value: Character_Player_grp
@@ -2384,10 +2375,6 @@ PrefabInstance:
     - target: {fileID: 7127659712042415526, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800846312394411696, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffac67f587266f240a67ad036d3bd872, type: 3}
