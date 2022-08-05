@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1.2f;
+    private float startMoveSpeed;
     [SerializeField] private float jumpForce = 3.2f;
 
     private Rigidbody2D rigidbody2D;
@@ -31,6 +32,7 @@ public class Movement : MonoBehaviour
 
     float horizontalDirection;
     bool facing; //= false;
+    //bool isPunch = true;
 
 
     private void Awake()
@@ -40,6 +42,8 @@ public class Movement : MonoBehaviour
         groundCheckTransform = GetComponentInChildren<CircleCollider2D>().transform;
 
         offsetPoint = attackPoint.localPosition.x;
+
+        startMoveSpeed = moveSpeed;
         //position.x = attackPoint.localPosition.x;
         //attackPoint = GetComponentInChildren<Transform>().transform;
     }
@@ -70,18 +74,33 @@ public class Movement : MonoBehaviour
             rigidbody2D.velocity = new Vector2(moveSpeed * direction, rigidbody2D.velocity.y);
         }
 
-        if ( direction > 0 )      //direction > 0 )
+        if ( direction > 0)      //direction > 0 )
         {
             position.x = offsetPoint;
 
         }
-        if(direction < 0)
+        if (direction < 0 )
         {
             //position.x = attackPoint.localPosition.x - attackPoint.localPosition.x * 2;
             position.x = -offsetPoint;
         }
+        SetMoveSpeedWithPunch();
+
+
         Debug.Log(position.x);
         attackPoint.localPosition = position;
+    }
+
+    private void SetMoveSpeedWithPunch()
+    {
+        if (isPunch)
+        {
+            moveSpeed /= 100;
+        }
+        else
+        {
+            moveSpeed = startMoveSpeed;
+        }
     }
 
     private void HandlePlayerAnimations()
@@ -130,11 +149,13 @@ public class Movement : MonoBehaviour
         if (Time.time >= nextAttackTime)
         {
             //playerAnimation.PlayPunchAnimation();
-            //isPunch = true;
+            isPunch = false;
 
+                Vector2 punchPos = rigidbody2D.velocity;
             if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
             {
                 playerAnimation.PlayPunchAnimation();
+                isPunch = true;
 
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
 
@@ -144,6 +165,7 @@ public class Movement : MonoBehaviour
                 }
 
                 nextAttackTime = Time.time + 1f / attackRate;
+
             }
 
         }
