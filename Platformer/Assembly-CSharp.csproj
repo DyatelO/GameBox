@@ -63,6 +63,10 @@
     <Compile Include="Assets\Scripts\HelperHandles\GlobalStringVars.cs" />
     <Compile Include="Assets\Scripts\HelperHandles\TagAnimation.cs" />
     <Compile Include="Assets\Scripts\Character\Puncher.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Sprites\Streets of Fight files\public-license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -724,6 +728,12 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

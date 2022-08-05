@@ -93,7 +93,11 @@ public class Movement : MonoBehaviour
 
     private void SetMoveSpeedWithPunch()
     {
-        if (isPunch)
+        //if(isGround)
+        //{
+
+        //}
+        if (isPunch && isGround == true)
         {
             moveSpeed /= 100;
         }
@@ -151,7 +155,7 @@ public class Movement : MonoBehaviour
             //playerAnimation.PlayPunchAnimation();
             isPunch = false;
 
-                Vector2 punchPos = rigidbody2D.velocity;
+                //Vector2 punchPos = rigidbody2D.velocity;
             if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
             {
                 playerAnimation.PlayPunchAnimation();
