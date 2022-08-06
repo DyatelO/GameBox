@@ -64,6 +64,10 @@
     <Compile Include="Assets\Scripts\HelperHandles\TagAnimation.cs" />
     <Compile Include="Assets\Scripts\Character\Puncher.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\TEST\ScriptableObjects\ControllContainer.cs" />
+    <Compile Include="Assets\Scripts\TEST\Inputs\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\TEST\Inputs\AIControl.cs" />
+    <Compile Include="Assets\Scripts\TEST\ControllInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sprites\Streets of Fight files\public-license.txt" />

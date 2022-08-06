@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    //[SerializeField] 
+
     [SerializeField] private float moveSpeed = 1.2f;
     private float startMoveSpeed;
     [SerializeField] private float jumpForce = 3.2f;
@@ -87,7 +89,7 @@ public class Movement : MonoBehaviour
         SetMoveSpeedWithPunch();
 
 
-        Debug.Log(position.x);
+        //Debug.Log(position.x);
         attackPoint.localPosition = position;
     }
 
