@@ -59,10 +59,13 @@
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\MovementSettings.cs" />
     <Compile Include="Assets\Scripts\ControllerInput.cs" />
-    <Compile Include="Assets\Scripts\MovementIbput.cs" />
+    <Compile Include="Assets\Scripts\IMovementIbput.cs" />
     <Compile Include="Assets\Scripts\AiInput.cs" />
     <Compile Include="Assets\Scripts\TagInput.cs" />
     <Compile Include="Assets\Scripts\MotionMovement.cs" />
+    <Compile Include="Assets\Scripts\MovementAnimantionSettings.cs" />
+    <Compile Include="Assets\Scripts\MotionAnimation.cs" />
+    <Compile Include="Assets\Scripts\TagAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

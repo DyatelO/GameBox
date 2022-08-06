@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface MovementIbput
+public interface IMovementIbput
 {
     public float Directon { get; }
     public bool IsJump { get; }

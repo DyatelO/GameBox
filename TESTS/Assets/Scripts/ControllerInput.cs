@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ControllerInput : MovementIbput
+public class ControllerInput : IMovementIbput
 {
     public float Directon { get; private set; }
     public bool IsJump { get; private set; }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MotionMovement
 {
-    private readonly MovementIbput movementIbput;
+    private readonly IMovementIbput movementIbput;
     private Rigidbody2D rigidbody2D;
     private MovementSettings movementSettings;
 
-    public MotionMovement(MovementIbput MovementIbput, Rigidbody2D Rigidbody, MovementSettings MovementSettings)
+    public MotionMovement(IMovementIbput MovementIbput, Rigidbody2D Rigidbody, MovementSettings MovementSettings)
     {
         this.movementIbput = MovementIbput;
         this.rigidbody2D = Rigidbody;
