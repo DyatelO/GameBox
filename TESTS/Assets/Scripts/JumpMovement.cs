@@ -21,8 +21,7 @@ public class JumpMovement
     public JumpMovement(IMovementInput MovementInput,
                         Rigidbody2D Rigidbody2D,
                         MovementSettings Settings,
-                        Transform GroundCheck)
-                        
+                        Transform GroundCheck)                   
     {
         this.groundMask = Settings.GroundMask;
         this.isGround = Settings.IsGround;
@@ -41,8 +40,17 @@ public class JumpMovement
         {
             if(isGround)
             {
+                isDoubleJump = true;
                 rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, settings.JumpForce);
             }
+            else
+            {
+                if(isDoubleJump)
+                {
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, settings.JumpForce);
+                    isDoubleJump = false;
+                }
+            }    
         }
     }
 
