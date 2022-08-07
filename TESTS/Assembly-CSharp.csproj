@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\MotionAnimation.cs" />
     <Compile Include="Assets\Scripts\DamageDiller.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Ai\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
