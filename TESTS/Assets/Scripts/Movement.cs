@@ -5,20 +5,24 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private MovementSettings movementSettings;
+    [SerializeField] private PunchSettings punchSettings;
     //[SerializeField] 
     private Transform GroundCheckTransform;
-    public GameObject attackPoint;
+    //public 
+    private Transform attackPoint;
 
     private IMovementInput movementIbput;
     //[SerializeField] 
     [SerializeField] private MotionMovement motionMovement;
     [SerializeField] private JumpMovement jumpMovement;
+    [SerializeField] private Punch punch;
     //
     private Rigidbody2D rigidbody2D;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private MotionAnimation motionAnimation;
+
 
 
     private void Awake()
@@ -47,25 +51,45 @@ public class Movement : MonoBehaviour
         jumpMovement = new JumpMovement(movementIbput, rigidbody2D, movementSettings, GroundCheckTransform);
         //jumpMovement = new JumpMovement(motionMovement, GroundCheckTransform);
         //
+        attackPoint = GetComponentInChildren<PunchPoint>().transform;
+        punch = new Punch(movementIbput, punchSettings, attackPoint);
+        //
 
     }
 
     private void Update()
     {
+        //if (movementIbput.IsPunch && jumpMovement.IsGround)     //movementIbput.Directon != 0)
+        //{
+        //    motionMovement.StopCharacter();
+        //}
+
+
         movementIbput.ReadInput();
-        movementIbput.ReadButtonPressedInput();
+        //movementIbput.ReadButtonPressedInput(); // Важно
+        //movementIbput.PressPunch();
         //motionMovement.Jump();
         //
         jumpMovement.Jump();
+        //
+        
+        punch.HandleAttack();
+        //
+
         //
         HandlePlayerAnimations();
     }
 
     private void FixedUpdate()
     {
+        //if ( jumpMovement.IsGround)
+        //{
+        //    if(punch.IsPunch )
+        //        motionMovement.StopCharacter();
+        //}
+
         motionMovement.Move();
         jumpMovement.IsOnGround();
- 
     }
 
     private void HandlePlayerAnimations()
@@ -76,9 +100,26 @@ public class Movement : MonoBehaviour
         //Debug.Log(facing);
 
        motionAnimation.PlayJumpAnimation(!jumpMovement.IsGround);
+
+        if (punch.IsPunch)
+            motionAnimation.PlayPunchAnimation();
     }
 
 
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, punchSettings.AttackRange);
+    }
+    private void SetMoveSpeedWithPunch()
+    {
+        //if (punch.IsPunch && jumpMovement.IsGround)
+        //{
+        //    motionMovement.StopCharacter();
+        //}
+    }
 
 
 

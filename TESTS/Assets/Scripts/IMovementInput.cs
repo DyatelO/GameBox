@@ -9,7 +9,9 @@ public interface IMovementInput
     public bool IsPunch { get; }
 
     public void ReadInput();
-    public void ReadButtonPressedInput();
+    //public void ReadButtonPressedInput();
+
+    //public void PressPunch();
 
 
 }//

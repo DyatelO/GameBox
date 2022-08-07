@@ -10,16 +10,7 @@ public class ControllerInput : IMovementInput
     public void ReadInput()
     {
         Directon = Input.GetAxis(TagInput.HORIZONTAL_AXIS);
-        //Debug.Log(Directon);
-        //IsJump = Input.GetButtonDown(TagInput.JUMP_BUTTON);
-
-    }
-
-    public void ReadButtonPressedInput()
-    {
         IsJump = Input.GetButtonDown(TagInput.JUMP_BUTTON);
         IsPunch = Input.GetButtonDown(TagInput.ATTACK_BUTTON);
     }
-
-
 }

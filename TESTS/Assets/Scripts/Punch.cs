@@ -1,47 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public class Punch 
 {
+    private IMovementInput input;
+    private PunchSettings settings;
+    [SerializeField] private Transform attackPoint;
+
     [SerializeField] private bool isPunch = false;
-    private CircleCollider2D circleCollider2D;
 
-    public Transform attackPoint;
-    Vector2 position;
-    float offsetPoint; //= attackPoint.localPosition.x;
-    [SerializeField] public float attackRange = 0.5f;
-    [SerializeField] public float attackRate = 2f;
-    private float nextAttackTime = 0f;
-    [SerializeField] private LayerMask enemyMask;
+    //private float nextAttackTime = 0;
 
+    public bool IsPunch { get { return isPunch; } }
 
-
-    private void HandleAttack()   // (float direction)
+    public Punch(IMovementInput Input, PunchSettings Settings, Transform AttackPoint)
     {
+        this.input = Input;
+        this.settings = Settings;
+        this.attackPoint = AttackPoint;
+    }
+
+
+    public void HandleAttack()   // (float direction)
+    {
+        float nextAttackTime = 0; // settings.NextAttackTime;
 
         if (Time.time >= nextAttackTime)
         {
-            //playerAnimation.PlayPunchAnimation();
             isPunch = false;
-
-            //Vector2 punchPos = rigidbody2D.velocity;
-            if (Input.GetButtonDown(TagInput.ATTACK_BUTTON))
+            if (input.IsPunch)
             {
-                //playerAnimation.PlayPunchAnimation();
                 isPunch = true;
+                //input.
 
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, settings.AttackRange, settings.EnemyMask);
 
                 foreach (Collider2D enemy in hitEnemies)
                 {
                     Debug.Log("We hit " + enemy.name);
                 }
 
-                nextAttackTime = Time.time + 1f / attackRate;
-
+                nextAttackTime = Time.time + 1f / settings.AttackRate;
+                isPunch = true;
             }
 
         }
     }
+
+
+
+    //
 }

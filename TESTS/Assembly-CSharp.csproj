@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\TagAnimation.cs" />
     <Compile Include="Assets\Scripts\JumpMovement.cs" />
     <Compile Include="Assets\Scripts\Punch.cs" />
+    <Compile Include="Assets\Scripts\PunchSettings.cs" />
+    <Compile Include="Assets\Scripts\PunchPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

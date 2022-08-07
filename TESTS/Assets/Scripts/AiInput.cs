@@ -19,4 +19,9 @@ public class AiInput : IMovementInput
     {
         return;
     }
+
+    public void PressPunch()
+    {
+        return;
+    }
 }

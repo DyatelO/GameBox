@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSettings: {fileID: 11400000, guid: 3cff2c5a7850fef4ebcda71f219e3341, type: 2}
-  attackPoint: {fileID: 0}
+  punchSettings: {fileID: 0}
   jumpMovement:
     isGround: 0
     groundCheckTransform: {fileID: 0}
@@ -632,5 +632,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4984876611964308239, guid: 7f8398486e7ba5b44bba68320937c26c, type: 3}
+      propertyPath: punchSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: f385a0543c0ba924995cb92daa590fc6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8398486e7ba5b44bba68320937c26c, type: 3}

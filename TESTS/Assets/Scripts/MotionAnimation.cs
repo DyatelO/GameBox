@@ -47,6 +47,7 @@ public class MotionAnimation
     public void PlayPunchAnimation()
     {
         animator.SetTrigger(TagAnimation.ATTACK_ANIMATION_TRIGGER_PARAMETER);
+        //animator.SetFloat(TagAnimation.WALK_ANIMATION_PARAMETER, 0);
     }
 
 
