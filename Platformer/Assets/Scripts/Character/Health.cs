@@ -5,10 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     private bool isAlive;
+    private bool isHurt = false;
 
-    private void Awake()
+    public bool  IsHurt{ get { return isHurt; } }
+
+
+    private void Start ()
     {
         currentHealth = maxHealth;
         isAlive = true;
@@ -17,14 +21,22 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        isHurt = true;
         CheckHealth();
+
     }
 
     private void CheckHealth()
     {
+        if (currentHealth > 0)
+        {
+            isHurt = false;
+        }
         if(currentHealth <= 0)
         {
             isAlive = false;
+            //SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

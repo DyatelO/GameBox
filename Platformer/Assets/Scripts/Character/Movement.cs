@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private bool isGround = false;
-    [SerializeField] private float jumpOffset ;
+    [SerializeField] private float jumpOffset;
     [SerializeField] private Transform groundCheckTransform;
 
     [SerializeField] private bool isPunch = false;
@@ -31,6 +31,9 @@ public class Movement : MonoBehaviour
     [SerializeField] public float attackRate = 2f;
     private float nextAttackTime = 0f;
     [SerializeField] private LayerMask enemyMask;
+    public int punchDamage = 35;
+
+    private Health health;
 
     float horizontalDirection;
     bool facing; //= false;
@@ -44,6 +47,7 @@ public class Movement : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimation>();
         groundCheckTransform = GetComponentInChildren<CircleCollider2D>().transform;
+        health = GetComponent<Health>();
 
         offsetPoint = attackPoint.localPosition.x;
 
@@ -60,6 +64,11 @@ public class Movement : MonoBehaviour
 
         //HndleAttack();
         HandleAttack();
+
+        //if (health.IsHurt)
+        //{
+        //playerAnimation.PlayHurtAnimation(health.IsHurt);
+        //}
     }
 
     private void FixedUpdate()
@@ -68,6 +77,8 @@ public class Movement : MonoBehaviour
         HandleMovementWithRigidBody2D(horizontalDirection);
 
         IsOnGround();
+
+
     }
 
     private void HandleMovementWithRigidBody2D(float direction)
@@ -119,6 +130,8 @@ public class Movement : MonoBehaviour
         //Debug.Log(facing);
 
         playerAnimation.PlayJumpAnimation(!isGround);
+       //playerAnimation.PlayHurtAnimation(health.IsHurt);
+        //playerAnimation.PlayHurtAnimation();
     }
 
     private void HandleJumping()
@@ -131,10 +144,6 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        //if (isGround)
-        //{
-        //    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
-        //}
         if (isGround)
         {
             isDoubleJump = true;
@@ -176,13 +185,17 @@ public class Movement : MonoBehaviour
             if(Input.GetButtonDown(TagAnimation.ATTACK_BUTTON))
             {
                 playerAnimation.PlayPunchAnimation();
+                //playerAnimation.PlayHurtAnimation();
+
                 isPunch = true;
 
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyMask);
 
                 foreach(Collider2D enemy in hitEnemies)
                 {
-                    Debug.Log("We hit " + enemy.name) ;
+                    //Debug.Log("We hit " + enemy.name) ;
+                    enemy.GetComponent<Health>().TakeDamage(punchDamage);
+
                 }
 
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -191,6 +204,7 @@ public class Movement : MonoBehaviour
 
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {

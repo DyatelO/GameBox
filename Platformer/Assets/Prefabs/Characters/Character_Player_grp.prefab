@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263238022}
+  - component: {fileID: 75477349}
+  - component: {fileID: 75477348}
   m_Layer: 0
   m_Name: 'Punch_Object '
   m_TagString: Untagged
@@ -30,6 +32,35 @@ Transform:
   m_Father: {fileID: 7127659712042415526}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &75477349
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263238021}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
+--- !u!114 &75477348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263238021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71af9d77e0165d4a834ed6afd75eca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
 --- !u!1 &7127659712042415525
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AiON: 0
+  playerRigidbody: {fileID: 0}
 --- !u!114 &7127659712042415527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +174,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
+  punchDamage: 35
 --- !u!114 &7127659712042415521
 MonoBehaviour:
   m_ObjectHideFlags: 0

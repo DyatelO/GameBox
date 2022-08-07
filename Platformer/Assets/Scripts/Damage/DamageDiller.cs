@@ -10,7 +10,7 @@ public class DamageDiller : MonoBehaviour
         {
             collision.GetComponent<Health>().TakeDamage(damage);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

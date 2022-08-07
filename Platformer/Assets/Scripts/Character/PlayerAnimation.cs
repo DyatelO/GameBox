@@ -57,6 +57,11 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetTrigger(TagAnimation.ATTACK_ANIMATION_TRIGGER_PARAMETER);
     }
 
+    public void PlayHurtAnimation(bool isHuer)
+    {
+        animator.SetTrigger(TagAnimation.ATTACK_ANIMATION_TRIGGER_PARAMETER);
+
+    }
 
 
 }   //
