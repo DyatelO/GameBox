@@ -126,6 +126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSettings: {fileID: 11400000, guid: a5d5bbd72fc9f7a4a8ab88c5d4d44d3d, type: 2}
+  GroundCheckTransform: {fileID: 5747813954639143216}
+  attackPoint: {fileID: 3255784670061378218}
+  jumpMovement:
+    groundMask:
+      serializedVersion: 2
+      m_Bits: 0
+    isGround: 0
+    jumpOffset: 0
+    groundCheckTransform: {fileID: 0}
 --- !u!1 &5747813954639143217
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,8 +313,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2105099359
-  m_SortingLayer: 0
+  m_SortingLayerID: 176579269
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 5905681027756182028, guid: 3db1f94c2a9c4456ca0c885b6b8736cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

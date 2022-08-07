@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
+[Serializable]
 public class MotionMovement
 {
-    private readonly IMovementIbput movementIbput;
+    private IMovementInput movementInput;
     private Rigidbody2D rigidbody2D;
     private MovementSettings movementSettings;
 
-    public MotionMovement(IMovementIbput MovementIbput, Rigidbody2D Rigidbody, MovementSettings MovementSettings)
+    public MotionMovement(IMovementInput MovementInput, Rigidbody2D Rigidbody, MovementSettings MovementSettings)
     {
-        this.movementIbput = MovementIbput;
+        this.movementInput = MovementInput;
         this.rigidbody2D = Rigidbody;
         this.movementSettings = MovementSettings;
     }
@@ -19,19 +19,21 @@ public class MotionMovement
     {
         Move();
 
-        Jump();
+        //Jump();
     }
 
     public void Move()
     {
-        rigidbody2D.velocity = new Vector2(movementSettings.MoveSpeed * movementIbput.Directon, rigidbody2D.velocity.y);
+        rigidbody2D.velocity = new Vector2(movementSettings.MoveSpeed * movementInput.Directon, rigidbody2D.velocity.y);
     }
 
-    public void Jump()
-    {
-        if(movementIbput.IsJump)
-        {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, movementSettings.JumpForce);
-        }        
-    }
+
+
+    //public void Jump()
+    //{
+    //    if(movementIbput.IsJump)
+    //    {
+    //        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, movementSettings.JumpForce);
+    //    }        
+    //}
 }

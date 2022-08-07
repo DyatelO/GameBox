@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public class MotionAnimation 
 {
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     public MotionAnimation(Animator Animator, SpriteRenderer SpriteRenderer)

@@ -5,24 +5,33 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private MovementSettings movementSettings;
+    [SerializeField] private Transform GroundCheckTransform;
     public GameObject attackPoint;
 
-    private IMovementIbput movementIbput;
+    private IMovementInput movementIbput;
+    //[SerializeField] 
     private MotionMovement motionMovement;
+    [SerializeField] private JumpMovement jumpMovement;
+    //
     private Rigidbody2D rigidbody2D;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private MotionAnimation motionAnimation;
 
+
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        //
+        //GroundCheckTransform = GetComponentInChildren<CircleCollider2D>();
 
+        //
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        //
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         motionAnimation = new MotionAnimation(animator, spriteRenderer);
-
+        //
         if(movementSettings.UseAI)
         {
             movementIbput = new AiInput();
@@ -33,8 +42,10 @@ public class Movement : MonoBehaviour
         }
 
         motionMovement = new MotionMovement(movementIbput, rigidbody2D, movementSettings);
-
-
+        //
+        jumpMovement = new JumpMovement(movementIbput, rigidbody2D, movementSettings, GroundCheckTransform);
+        //jumpMovement = new JumpMovement(motionMovement, GroundCheckTransform);
+        //
 
     }
 
@@ -42,17 +53,17 @@ public class Movement : MonoBehaviour
     {
         movementIbput.ReadInput();
         movementIbput.ReadButtonPressedInput();
-        motionMovement.Jump();
-
+        //motionMovement.Jump();
+        jumpMovement.Jump();
+        //
         HandlePlayerAnimations();
     }
 
     private void FixedUpdate()
     {
-        //motionMovement.Tick();
-        //motionAnimation.PlayWalkAnimation(Mathf.Abs(rigidbody2D.velocity.x));
-        motionMovement.Move();        
-        //motionMovement.Jump();      
+        motionMovement.Move();
+        jumpMovement.IsOnGround();
+ 
     }
 
     private void HandlePlayerAnimations()
@@ -62,7 +73,7 @@ public class Movement : MonoBehaviour
 
         //Debug.Log(facing);
 
-       // motionAnimation.PlayJumpAnimation(!isGround);
+       motionAnimation.PlayJumpAnimation(!jumpMovement.IsGround);
     }
 
 } //

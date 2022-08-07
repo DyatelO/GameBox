@@ -15,3 +15,9 @@ MonoBehaviour:
   moveSpeed: 1.2
   jumpForce: 3.2
   useAi: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isGround: 0
+  jumpOffset: 0.2
+  groundCheckTransform: {fileID: 0}
