@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3d03759141e8e468afce4cfa4112d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: {fileID: 3255784670061378217}
+  settings: {fileID: 11400000, guid: f385a0543c0ba924995cb92daa590fc6, type: 2}
+  spriteRenderer: {fileID: 5747813955926587355}
 --- !u!1 &4984876611964308235
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4984876611964308238}
   - component: {fileID: 4984876611964308237}
+  - component: {fileID: 2215617373265781020}
   - component: {fileID: 4984876611964308236}
   - component: {fileID: 4984876611964308239}
   m_Layer: 0
@@ -105,6 +109,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2215617373265781020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984876611964308235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702fb3a49e350794f9ee2c1191477460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4984876611964308236
 Rigidbody2D:
   serializedVersion: 4
@@ -139,10 +155,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSettings: {fileID: 11400000, guid: a5d5bbd72fc9f7a4a8ab88c5d4d44d3d, type: 2}
-  punchSettings: {fileID: 0}
+  punchSettings: {fileID: 11400000, guid: f385a0543c0ba924995cb92daa590fc6, type: 2}
   jumpMovement:
     isGround: 0
     groundCheckTransform: {fileID: 0}
+  punch:
+    isPunch: 0
+  punchPoint: {fileID: 0}
 --- !u!1 &5747813954639143217
 GameObject:
   m_ObjectHideFlags: 0

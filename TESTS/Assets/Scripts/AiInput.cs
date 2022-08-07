@@ -7,10 +7,22 @@ public class AiInput : IMovementInput
     public float Directon { get; private set; }
     public bool IsJump { get; private set; }
 
-    public bool IsPunch => throw new System.NotImplementedException();
+    public bool IsPunch { get; private set; }
+
+    [SerializeField] private GameObject player = null;
+
+    private void FindPlayer()
+    {
+        if (player == null)
+            player = GameObject.FindObjectOfType<Player>().gameObject;
+        else
+            return;
+    }
 
     public void ReadInput()
     {
+        
+        FindPlayer();
         Directon = Vector2.left.x;
         //IsJump = ;
     }

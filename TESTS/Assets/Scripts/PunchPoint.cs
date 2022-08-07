@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PunchPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform attackPoint ;
+    [SerializeField] private PunchSettings settings;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    // Update is called once per frame
-    void Update()
+    public void FindEnemyForPunch()
     {
-        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
+                                                            attackPoint.position,
+                                                            settings.AttackRange,
+                                                            settings.EnemyMask
+                                                            );
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+
+        }
     }
 }

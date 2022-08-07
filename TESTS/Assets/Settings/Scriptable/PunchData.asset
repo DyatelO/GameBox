@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PunchData
   m_EditorClassIdentifier: 
   isPunch: 0
-  attackPoint: {fileID: 0}
-  attackRange: 0.5
+  damage: 15
+  attackRange: 0.3
   attackRate: 4
   enemyMask:
     serializedVersion: 2

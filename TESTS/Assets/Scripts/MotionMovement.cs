@@ -8,6 +8,8 @@ public class MotionMovement
     private Rigidbody2D rigidbody2D;
     private MovementSettings movementSettings;
 
+
+
     private float startDragParameter;
     private float stopParameter = 1000;
     //private float lastVelocity;
@@ -28,34 +30,12 @@ public class MotionMovement
 
     public void Move()
     {
-        //if(!movementInput.IsJump)
-        //{
-        //    if(movementInput.IsPunch && movementInput.Directon != 0)
-        //    {
-        //        rigidbody2D.drag *= 2000;
-        //        rigidbody2D.velocity = Vector2.zero.normalized;
-        //    }
-        //    else
-        //    {
-        //        rigidbody2D.drag = 0;
-        //    }
-        //}
-        if(!movementInput.IsJump)
-        {
-            while(Mathf.Abs(movementInput.Directon) > 0.2f)
-            {
-                if(movementInput.IsPunch)
-                {
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x * 0, rigidbody2D.velocity.y) ;
-                    break;
-                }
-            }
-        }
+            rigidbody2D.velocity = new Vector2(movementSettings.MoveSpeed * movementInput.Directon, rigidbody2D.velocity.y);
+    }
 
-
-        rigidbody2D.velocity = new Vector2(movementSettings.MoveSpeed * movementInput.Directon, rigidbody2D.velocity.y);
-
-
+    public void Move(float speed)
+    {
+        rigidbody2D.velocity = new Vector2(speed * movementInput.Directon, rigidbody2D.velocity.y);
     }
 
     public void StopCharacter()

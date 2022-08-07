@@ -6,7 +6,8 @@ using UnityEngine;
 public class PunchSettings : ScriptableObject
 {
     [SerializeField] private bool isPunch = false;
-   // [SerializeField] private Transform attackPoint;
+    // [SerializeField] private Transform attackPoint;
+    [SerializeField] private float damage = 15;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private float attackRate = 2f;
     [SerializeField] private LayerMask enemyMask;
@@ -21,6 +22,7 @@ public class PunchSettings : ScriptableObject
 
     public bool IsPunch { get { return isPunch; } }
     //public Transform AttackPoint { get { return attackPoint; } }
+    public float Damage { get { return damage; } }
     public float AttackRange { get { return attackRange; } }
     public float AttackRate { get { return attackRate; } }
     public LayerMask EnemyMask { get { return enemyMask; } }

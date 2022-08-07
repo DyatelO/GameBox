@@ -16,14 +16,16 @@ public class Movement : MonoBehaviour
     [SerializeField] private MotionMovement motionMovement;
     [SerializeField] private JumpMovement jumpMovement;
     [SerializeField] private Punch punch;
+    [SerializeField] private DamageDiller damageDiller;
+
+    [SerializeField] private PunchPoint punchPoint;
+    Vector2 pointPosition;
     //
     private Rigidbody2D rigidbody2D;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private MotionAnimation motionAnimation;
-
-
 
     private void Awake()
     {
@@ -35,6 +37,8 @@ public class Movement : MonoBehaviour
         //
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+
         motionAnimation = new MotionAnimation(animator, spriteRenderer);
         //
         if(movementSettings.UseAI)
@@ -52,9 +56,12 @@ public class Movement : MonoBehaviour
         //jumpMovement = new JumpMovement(motionMovement, GroundCheckTransform);
         //
         attackPoint = GetComponentInChildren<PunchPoint>().transform;
-        punch = new Punch(movementIbput, punchSettings, attackPoint);
+        pointPosition = attackPoint.localPosition;
+        punch = new Punch(movementIbput, punchSettings, rigidbody2D);
         //
-
+        damageDiller = new DamageDiller(punchSettings, attackPoint);
+        punchPoint = new PunchPoint();
+        //
     }
 
     private void Update()
@@ -63,7 +70,6 @@ public class Movement : MonoBehaviour
         //{
         //    motionMovement.StopCharacter();
         //}
-
 
         movementIbput.ReadInput();
         //movementIbput.ReadButtonPressedInput(); // Важно
@@ -76,24 +82,64 @@ public class Movement : MonoBehaviour
         punch.HandleAttack();
         //
 
+        punch.HandleAttack();
+
+        if (jumpMovement.IsGround == true && punch.IsPunch)
+        {
+            motionMovement.Move(0);
+            //rigidbody2D.velocity = new Vector2(-rigidbody2D.velocity.x, rigidbody2D.velocity.y);
+        }
         //
         HandlePlayerAnimations();
     }
 
     private void FixedUpdate()
     {
-        //if ( jumpMovement.IsGround)
-        //{
-        //    if(punch.IsPunch )
-        //        motionMovement.StopCharacter();
-        //}
+        SettPunchPointPosition();
 
         motionMovement.Move();
         jumpMovement.IsOnGround();
+
+
+
+        //damageDiller.Damage();
+        //punch.HandleAttack();
+    }
+
+    private void SettPunchPointPosition()
+    {
+        float offsetX;
+        pointPosition = attackPoint.position;
+        offsetX = Vector2.Distance(pointPosition, gameObject.transform.position);
+        //pointPosition = attackPoint.transform.localPosition - transform.localPosition;
+        if (!spriteRenderer.flipX)
+        {
+            pointPosition.x = -offsetX;
+            //Vector2 pointPosition = attackPoint.position;
+            //pointPosition.x
+               //offsetX = Vector2.Distance(-attackPoint.transform.position, transform.position);
+            Debug.Log(offsetX);
+            //attackPoint.transform.position.x = -offsetX; 
+            //Debug.Log(attackPoint.localPosition.x);
+            //Debug.Log(transform. position.x);
+        }
+        if(spriteRenderer.flipX)
+        {
+            pointPosition.x = offsetX;
+            //pointPosition.x = transform.position.x + attackPoint.transform.localPosition.x ;
+        }
+
+        attackPoint.position = pointPosition;
+        //else
+        //{
+        //    pointPosition.x = attackPoint.transform.localPosition.x;
+        //}
+        //attackPoint.transform.position = pointPosition;
     }
 
     private void HandlePlayerAnimations()
     {
+
         motionAnimation.PlayWalkAnimation(Mathf.Abs(rigidbody2D.velocity.x));
         motionAnimation.SetFacingDirection(rigidbody2D.velocity.x);
 
@@ -102,7 +148,11 @@ public class Movement : MonoBehaviour
        motionAnimation.PlayJumpAnimation(!jumpMovement.IsGround);
 
         if (punch.IsPunch)
+        {
             motionAnimation.PlayPunchAnimation();
+            //punch.IsPunch = false;
+        }
+
     }
 
 

@@ -56,20 +56,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Punch.cs" />
+    <Compile Include="Assets\Scripts\TagAnimation.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
-    <Compile Include="Assets\Scripts\MovementSettings.cs" />
-    <Compile Include="Assets\Scripts\ControllerInput.cs" />
+    <Compile Include="Assets\Scripts\MovementAnimantionSettings.cs" />
+    <Compile Include="Assets\Scripts\MotionMovement.cs" />
+    <Compile Include="Assets\Scripts\PunchSettings.cs" />
+    <Compile Include="Assets\Scripts\TagInput.cs" />
     <Compile Include="Assets\Scripts\IMovementInput.cs" />
     <Compile Include="Assets\Scripts\AiInput.cs" />
-    <Compile Include="Assets\Scripts\TagInput.cs" />
-    <Compile Include="Assets\Scripts\MotionMovement.cs" />
-    <Compile Include="Assets\Scripts\MovementAnimantionSettings.cs" />
-    <Compile Include="Assets\Scripts\MotionAnimation.cs" />
-    <Compile Include="Assets\Scripts\TagAnimation.cs" />
+    <Compile Include="Assets\Scripts\ControllerInput.cs" />
     <Compile Include="Assets\Scripts\JumpMovement.cs" />
-    <Compile Include="Assets\Scripts\Punch.cs" />
-    <Compile Include="Assets\Scripts\PunchSettings.cs" />
     <Compile Include="Assets\Scripts\PunchPoint.cs" />
+    <Compile Include="Assets\Scripts\MovementSettings.cs" />
+    <Compile Include="Assets\Scripts\MotionAnimation.cs" />
+    <Compile Include="Assets\Scripts\DamageDiller.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -34,7 +34,9 @@ public class Movement : MonoBehaviour
 
     float horizontalDirection;
     bool facing; //= false;
-    //bool isPunch = true;
+                 //bool isPunch = true;
+
+    private bool isDoubleJump;
 
 
     private void Awake()
@@ -129,9 +131,22 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
+        //if (isGround)
+        //{
+        //    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+        //}
         if (isGround)
         {
+            isDoubleJump = true;
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+        }
+        else
+        {
+            if (isDoubleJump)
+            {
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+                isDoubleJump = false;
+            }
         }
     }
 
