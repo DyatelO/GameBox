@@ -7,6 +7,8 @@ public class AiInput : IMovementInput
     public float Directon { get; private set; }
     public bool IsJump { get; private set; }
 
+    public bool IsPunch => throw new System.NotImplementedException();
+
     public void ReadInput()
     {
         Directon = Vector2.left.x;

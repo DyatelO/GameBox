@@ -126,14 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSettings: {fileID: 11400000, guid: a5d5bbd72fc9f7a4a8ab88c5d4d44d3d, type: 2}
-  GroundCheckTransform: {fileID: 5747813954639143216}
   attackPoint: {fileID: 3255784670061378218}
   jumpMovement:
-    groundMask:
-      serializedVersion: 2
-      m_Bits: 0
     isGround: 0
-    jumpOffset: 0
     groundCheckTransform: {fileID: 0}
 --- !u!1 &5747813954639143217
 GameObject:

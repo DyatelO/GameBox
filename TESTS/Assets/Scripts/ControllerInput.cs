@@ -5,6 +5,7 @@ public class ControllerInput : IMovementInput
 {
     public float Directon { get; private set; }
     public bool IsJump { get; private set; }
+    public bool IsPunch { get; private set; }
 
     public void ReadInput()
     {
@@ -17,6 +18,7 @@ public class ControllerInput : IMovementInput
     public void ReadButtonPressedInput()
     {
         IsJump = Input.GetButtonDown(TagInput.JUMP_BUTTON);
+        IsPunch = Input.GetButtonDown(TagInput.ATTACK_BUTTON);
     }
 
 

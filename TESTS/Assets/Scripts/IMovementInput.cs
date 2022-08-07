@@ -6,13 +6,10 @@ public interface IMovementInput
 {
     public float Directon { get; }
     public bool IsJump { get; }
+    public bool IsPunch { get; }
 
     public void ReadInput();
-    //{
-    //    Debug.Log("MovementIbput");
-    //}
-
     public void ReadButtonPressedInput();
 
 
-}
+}//

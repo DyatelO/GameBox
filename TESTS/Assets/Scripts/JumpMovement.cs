@@ -4,13 +4,15 @@ using UnityEngine;
 [Serializable]
 public class JumpMovement 
 {
-    [SerializeField] private LayerMask groundMask;
+    //
+    //[SerializeField] private LayerMask groundMask;
     [SerializeField] private bool isGround = false;
-    [SerializeField] private float jumpOffset;
-    [SerializeField] private Transform groundCheckTransform;
+    //[SerializeField] private float jumpOffset;
+    [SerializeField] 
+    private Transform groundCheckTransform;
 
-    private float jumpForce;
-
+    //private float jumpForce;
+    //
     private Rigidbody2D rigidbody2D;
     private IMovementInput movementInput;
     private MovementSettings settings;
@@ -23,10 +25,10 @@ public class JumpMovement
                         MovementSettings Settings,
                         Transform GroundCheck)                   
     {
-        this.groundMask = Settings.GroundMask;
-        this.isGround = Settings.IsGround;
-        this.jumpOffset = Settings.JumpOffset;
-        this.jumpForce = Settings.JumpForce;
+        //this.groundMask = Settings.GroundMask;
+        //this.isGround = Settings.IsGround;
+        //this.jumpOffset = Settings.JumpOffset;
+        //this.jumpForce = Settings.JumpForce;
         this.groundCheckTransform = GroundCheck;
         this.rigidbody2D = Rigidbody2D;
         this.movementInput = MovementInput;
@@ -57,6 +59,7 @@ public class JumpMovement
     public void IsOnGround()
     {
         Vector3 overlapCirclePosition = groundCheckTransform.position;
-        isGround = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
+        //isGround = Physics2D.OverlapCircle(overlapCirclePosition, jumpOffset, groundMask);
+        isGround = Physics2D.OverlapCircle(overlapCirclePosition, settings.JumpOffset, settings.GroundMask);
     }
 }

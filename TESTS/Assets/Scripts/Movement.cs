@@ -5,12 +5,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private MovementSettings movementSettings;
-    [SerializeField] private Transform GroundCheckTransform;
+    //[SerializeField] 
+    private Transform GroundCheckTransform;
     public GameObject attackPoint;
 
     private IMovementInput movementIbput;
     //[SerializeField] 
-    private MotionMovement motionMovement;
+    [SerializeField] private MotionMovement motionMovement;
     [SerializeField] private JumpMovement jumpMovement;
     //
     private Rigidbody2D rigidbody2D;
@@ -23,7 +24,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         //
-        //GroundCheckTransform = GetComponentInChildren<CircleCollider2D>();
+        GroundCheckTransform = GetComponentInChildren<CircleCollider2D>().transform;
 
         //
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -54,6 +55,7 @@ public class Movement : MonoBehaviour
         movementIbput.ReadInput();
         movementIbput.ReadButtonPressedInput();
         //motionMovement.Jump();
+        //
         jumpMovement.Jump();
         //
         HandlePlayerAnimations();
@@ -76,4 +78,28 @@ public class Movement : MonoBehaviour
        motionAnimation.PlayJumpAnimation(!jumpMovement.IsGround);
     }
 
+
+
+
+
 } //
+
+
+    // DOpolnit'
+    //---------
+    //private void SetMoveSpeedWithPunch()
+    //{
+    //    //if(isGround)
+    //    //{
+
+    //    //}
+    //    if (isPunch && jumpMovement.IsGround == true)
+    //    {
+    //        moveSpeed /= 100;
+    //    }
+    //    else
+    //    {
+    //        moveSpeed = startMoveSpeed;
+    //    }
+    //}
+    //--------------
